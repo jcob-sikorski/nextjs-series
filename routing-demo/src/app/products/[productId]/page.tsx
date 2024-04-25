@@ -6,6 +6,9 @@ import { Metadata } from "next";
 // Note: to define dynamic metadata we export a generate metadata 
 //       function which returns the metadata object from a layout.tsx or page.tsx
 
+// Note: you cannot export both the metadata object and the 
+//       generateMetadata function from the same route segment
+
 type Props = {
     params: {
         productId: string;
