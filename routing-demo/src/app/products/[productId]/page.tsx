@@ -1,3 +1,33 @@
+import { Metadata } from "next";
+
+// Note: Dynamic metadata depends on dynamic information such 
+//       as current route parameters, external data or metadata in parent segments
+
+// Note: to define dynamic metadata we export a generate metadata 
+//       function which returns the metadata object from a layout.tsx or page.tsx
+
+type Props = {
+    params: {
+        productId: string;
+    };
+};
+
+export const generateMetadata =  async({ 
+    params
+}: Props):Promise<Metadata> => {
+    const title = await new Promise(resolve => {
+        setTimeout(() => {
+            resolve(`iPhone ${params.productId}`) // Note: we can also implement some 
+                                                  //       getTitleById function which 
+                                                  //       makes API call
+        }, 100)
+    });
+
+    return {
+        title: `Product ${title}`
+    };
+};
+
 // Note: dynamic route component which displays the text details about the product
 // route is /products/N - where N can be whatever number; where N is productId
 
