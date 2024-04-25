@@ -8,7 +8,7 @@ export default function ReviewDetail({ params }: {
 }) {
     if (parseInt(params.reviewId) > 1000) {
         notFound(); // Note: programmatically show the Not Found page
-    }
+    } 
     return (
         <h1>
             Review {params.reviewId} for product {params.productId}
