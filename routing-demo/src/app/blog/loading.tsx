@@ -7,7 +7,7 @@
 //       and actively loading content
 
 // Note: this file will automatically wrap the page.tsx file 
-//       and all its nested children within a react suspends boundary
+//       and all its nested children within a react suspense boundary
 
 // Note: this file reassures users that their reaction has 
 //       been acknowledged, reduces perceived times, and 
