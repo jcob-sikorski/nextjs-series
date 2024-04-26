@@ -41,15 +41,21 @@ export default function DashboardLayout({
     users,
     revenue,
     notifications,
+    login,
 }: {
     children: React.ReactNode;
     users: React.ReactNode;
     revenue: React.ReactNode;
     notifications: React.ReactNode;
+    login: React.ReactNode;
 }) {
+    const isLoggedIn = false; // Note: in real world we would use a function 
+                             //        e.g. getUser or useAuth to get user's state.
 
     // Note: below are passed slots as children
-    return (
+    // Note: parallel routes allow us to conditionally 
+    //       render code and keep the code well separated under the same URL.
+    return isLoggedIn ? (
         // <>
         //     <div>{children}</div> {/* Component from page.tsx */}
         //     <UserAnalytics /> {/* Component for user analytics */}
@@ -66,5 +72,7 @@ export default function DashboardLayout({
                 <div style={{ display: "flex", flex: 1 }}>{notifications}</div>
             </div>
         </div>
+    ) : (
+        login // Instead render login slot
     );
 }
