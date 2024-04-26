@@ -13,9 +13,16 @@
 //       e.g. when we go to complex-dashboard/users we'll see the users component
 
 import Card from "@/components/card";
+import Link from "next/link";
 
 export default function Notifications() { // Note: we return the styled div
                                           //       component from components folder
     // return <div>Notifications</div>;
-    return <Card>Notifications</Card>;
+    // return <Card>Notifications</Card>;
+    return(
+        <Card>
+            <div>Notifications</div>
+            <Link href="/complex-dashboard/archived">Archived</Link>
+        </Card>
+    );
 }
