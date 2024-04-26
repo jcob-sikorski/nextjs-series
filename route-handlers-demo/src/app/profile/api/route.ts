@@ -8,6 +8,31 @@
 //       To get the response from this API we have to go 
 //       to the /profile/api
 
-export async function GET() {
-    return new Response("Profile API data");
+import { type NextRequest } from "next/server";
+import { headers, cookies } from "next/headers";
+
+export async function GET(request: NextRequest) {
+    const requestHeaders = new Headers(request.headers)
+    const headerList = headers();
+
+    cookies().set("resultsPerPage", "20"); // Note: another way to set a cookie instead
+                                           //       of returning it as "Set-Cookie" header
+
+    const theme = request.cookies.get("theme"); // Note: after cookie is set the browser will 
+                                                //       send it always with the request and 
+                                                //       this is how we can read it
+
+    console.log(requestHeaders.get("Authorization"));
+    console.log(headerList.get("Authorization"));
+
+    console.log(theme);
+    console.log(cookies().get("resultsPerPage"));
+
+    return new Response("<h1>Profile API data</h1>", {
+        headers: {
+            "Content-Type": "text/html",
+            "Set-Cookie": "theme=dark", // Note: Set cookie to the theme=dark when the 
+                                        //       request to this route is made
+        }
+    });
 }
